@@ -1,0 +1,11 @@
+{
+  "name": "NetflixPlusPlus API",
+  "description": "Go API Backend for NetflixPlusPlus",
+  "keywords": [
+    "go",
+  ],
+  "image": "heroku/go:1.6",
+  "mount_dir": "src/github.com/stevokk/netflixplusplus",
+  "website": "http://github.com/stevokk/netflixplusplus",
+  "repository": "http://github.com/stevokk/netflixplusplus"
+}
