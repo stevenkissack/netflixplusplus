@@ -1,0 +1,45 @@
+{
+	"ImportPath": "github.com/stevokk/netflixplusplus",
+	"GoVersion": "go1.8",
+	"GodepVersion": "v79",
+	"Deps": [
+		{
+			"ImportPath": "github.com/gin-gonic/gin",
+			"Comment": "v1.2-75-g7180f2b",
+			"Rev": "7180f2ba62d6aa9c81fafbac409a07ebeaa26fff"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin/binding",
+			"Comment": "v1.2-75-g7180f2b",
+			"Rev": "7180f2ba62d6aa9c81fafbac409a07ebeaa26fff"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin/render",
+			"Comment": "v1.2-75-g7180f2b",
+			"Rev": "7180f2ba62d6aa9c81fafbac409a07ebeaa26fff"
+		},
+		{
+			"ImportPath": "github.com/manucorporat/sse",
+			"Rev": "ee05b128a739a0fb76c7ebd3ae4810c1de808d6d"
+		},
+		{
+			"ImportPath": "github.com/mattn/go-colorable",
+			"Comment": "v0.0.8-5-g3fa8c76",
+			"Rev": "3fa8c76f9daed4067e4a806fb7e4dc86455c6d6a"
+		},
+		{
+			"ImportPath": "github.com/mattn/go-isatty",
+			"Comment": "v0.0.2",
+			"Rev": "fc9e8d8ef48496124e79ae0df75490096eccf6fe"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context",
+			"Rev": "b3756b4b77d7b13260a0a2ec658753cf48922eac"
+		},
+		{
+			"ImportPath": "gopkg.in/bluesuncorp/validator.v5",
+			"Comment": "v5.12",
+			"Rev": "d5acf1dac43705f8bfbb71d878e290e2bed3950b"
+		}
+	]
+}
