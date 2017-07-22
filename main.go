@@ -90,7 +90,7 @@ func main() {
 			return
 		}
 
-		c.JSON(http.StatusOK, gin.H{"result": response.Body})
+		c.JSON(http.StatusOK, gin.H{"result": response})
 
 	})
 
