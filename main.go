@@ -56,8 +56,8 @@ func main() {
 	// Set global
 	omdbApiKey = apiKey
 
-	router := gin.New()
-	router.Use(gin.Logger())
+	router := gin.Default()
+	//router.Use(gin.Logger())
 
 	router.GET("/details", func(c *gin.Context) {
 
