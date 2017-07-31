@@ -1,5 +1,5 @@
 # Netflix++
-Netflix rating add-on solution - Including a Chrome browser extension
+Netflix rating add-on solution - Including Chrome & Firefox browser extensions
 
 ## Architecture
 
@@ -21,7 +21,6 @@ The OMDB API requires an API Key hence the need for the server app, I host it on
 All contributions are welcome, I wanted to make the plugin for my own usage but I also like OSS - So here we are!
 
 ## Future features
- - Other rating platforms
- - External IMDB links
- - Secret categories
+ - External links for more info
+ - Secret Netflix categories
  - Anything!

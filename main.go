@@ -1,28 +1,51 @@
 package main
 
 import (
-	"io"
+	"encoding/json"
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/gregjones/httpcache"
 )
 
-var omdbApiKey string
+var omdbAPIKey string
+var reqClient = &http.Client{
+	Timeout:   10 * time.Second,
+	Transport: httpcache.NewMemoryCacheTransport(),
+}
 
+// OmdbReq Formats what we use to generate the Request URL to OMDB API
 type OmdbReq struct {
 	title     string
 	mediatype string
 }
 
-func GetOmdbUrl(o OmdbReq) string {
+// Rating Formats each DB rating, e.g. IMDB & Rotten Tomatoes
+type Rating struct {
+	Source string
+	Value  string
+}
 
-	reqURL := "https://www.omdbapi.com/?r=json&plot=short&apiKey="
-	reqURL += omdbApiKey
+// OmdbResp Formats repsonse from OMDB API
+type OmdbResp struct {
+	Error   string
+	Title   string
+	Year    string
+	Type    string
+	Ratings []Rating
+	ImdbID  string `json:"imdbID"`
+}
+
+func getOmdbURL(o OmdbReq) string {
+
+	reqURL := "https://www.omdbapi.com/?r=json&plot=short&apikey="
+	reqURL += omdbAPIKey
 
 	// Required title
-	reqURL += "&title="
+	reqURL += "&t="
 	reqURL += o.title
 
 	// Conditional type param
@@ -41,23 +64,32 @@ func GetOmdbUrl(o OmdbReq) string {
 	return reqURL
 }
 
+func getJSON(url string, target interface{}) error {
+	r, err := reqClient.Get(url)
+	if err != nil {
+		return err
+	}
+	defer r.Body.Close()
+
+	return json.NewDecoder(r.Body).Decode(target)
+}
+
 func main() {
 	port := os.Getenv("PORT")
-	apiKey := os.Getenv("OMDB_KEY")
+	omdbAPIKey = os.Getenv("OMDB_KEY")
 
 	if port == "" {
-		log.Fatal("$PORT must be set")
+		log.Fatal("env PORT must be set")
 	}
 
-	if apiKey == "" {
-		log.Fatal("$OMDB_KEY must be set")
+	if omdbAPIKey == "" {
+		log.Fatal("env OMDB_KEY must be set")
 	}
 
-	// Set global
-	omdbApiKey = apiKey
+	// Set ENV key global to the package
+	//omdbAPIKey = apiKey
 
 	router := gin.Default()
-	//router.Use(gin.Logger())
 
 	router.GET("/details", func(c *gin.Context) {
 
@@ -65,28 +97,21 @@ func main() {
 		mType := c.Query("type")
 
 		if mTitle == "" {
-			c.JSON(422, gin.H{"Error": "Missing title parameter"})
+			c.JSON(422, gin.H{"error": "Missing title parameter"})
 			return
 		}
 
 		reqStruct := OmdbReq{mTitle, mType}
-		reqURL := GetOmdbUrl(reqStruct)
+		reqURL := getOmdbURL(reqStruct)
 
-		response, err := http.Get(reqURL)
+		log.Print(reqURL)
 
-		if err != nil {
-			log.Fatal(err)
-			c.JSON(500, gin.H{"Error": "Failed to contact remote service"})
-			return
-		}
-
-		defer response.Body.Close()
-
-		_, errP := io.Copy(os.Stdout, response.Body)
+		response := new(OmdbResp) // or &Foo{}
+		errP := getJSON(reqURL, response)
 
 		if errP != nil {
-			log.Fatal(err)
-			c.JSON(500, gin.H{"Error": "Failed to parse response from remote service"})
+			log.Fatal(errP)
+			c.JSON(500, gin.H{"error": "Failed to parse response from remote service"})
 			return
 		}
 
