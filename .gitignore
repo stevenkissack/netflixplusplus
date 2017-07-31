@@ -1,3 +1,5 @@
 .env
 .docker_build/
 .vscode/*
+debug
+netflixplusplus.exe
