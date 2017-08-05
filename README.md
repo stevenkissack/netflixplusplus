@@ -30,4 +30,8 @@ All contributions are welcome, I wanted to make the plugin for my own usage but 
 ## Structure
 
 api/ - Go application
+
 **Heroku command:** git subtree push --prefix api heroku master
+
+**Heroku force push if changes are being rejected** git push heroku \`git subtree split --prefix api master\`:master --force
+
