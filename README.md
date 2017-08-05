@@ -15,7 +15,7 @@ Golang backend serving API request calls
  - 
 
 ### Deployment
-The OMDB API requires an API Key hence the need for the server app, I host it on a free Heroku instance and the code deployed is exactly what is in master.
+The OMDB API requires an API Key hence the need for the server app, I host it on a free Heroku instance and the code deployed is exactly what is in master, subtree **api/**.
 
 ## Constributing
 All contributions are welcome, I wanted to make the plugin for my own usage but I also like OSS - So here we are!
@@ -24,3 +24,10 @@ All contributions are welcome, I wanted to make the plugin for my own usage but 
  - External links for more info
  - Secret Netflix categories
  - Anything!
+
+# Developing
+
+## Structure
+
+api/ - Go application
+**Heroku command:** git subtree push --prefix api heroku master
