@@ -25,13 +25,30 @@ All contributions are welcome, I wanted to make the plugin for my own usage but 
  - Secret Netflix categories
  - Anything!
 
+
+
 # Developing
 
-## Structure
-
+## Golang API
 api/ - Go application
+
+**npm** npm run build || npm run watch || npm run release
 
 **Heroku command:** git subtree push --prefix api heroku master
 
 **Heroku force push if changes are being rejected** git push heroku \`git subtree split --prefix api master\`:master --force
 
+## Browser Extensions
+
+### Chrome
+
+1. Go to URL: `chrome://extensions/`
+2. Enable **Developer mode**
+3. Click **Load unpacked extension**
+4. Select `extension`
+
+### Firefox
+
+1. Go to URL: `about:debugging#addons`
+2. Click **Load Temporary Add-on**
+3. Select `extension/manifest.json`

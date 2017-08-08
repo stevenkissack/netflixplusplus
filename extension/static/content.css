@@ -1,0 +1,14 @@
+.npp-wrapper {
+  position:absolute;
+  top:0;
+  left:0;
+  
+  z-index: 99990;
+  min-width: 100px;
+  min-height: 100px;
+  background-color: #fff;
+  color: #000;
+}
+.npp-wrapper .npp-link {
+  z-index: 99991;
+}

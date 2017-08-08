@@ -4,3 +4,8 @@
 debug
 netflixplusplus.exe
 api/Godeps/Readme
+
+
+node_modules
+yarn.lock
+extension/dist/*

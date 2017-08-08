@@ -1,0 +1,46 @@
+{
+	"name": "NetflixPlusPlus",
+	"version": "0.1.0",
+	"description": "Browser extensions for Netflix++ backend",
+	"homepage_url": "https://github.com/stevokk/netflixplusplus",
+	"manifest_version": 2,
+	"minimum_chrome_version": "58",
+	"applications": {
+		"gecko": {
+			"id": "netflixplusplus/stevokk",
+			"strict_min_version": "52.0"
+		}
+	},
+	"permissions": [
+		"storage",
+		"http://netflixplusplus.heroku.com/*",
+		"http://localhost/*"
+	],
+	"icons": {
+		"128": "icon-128.png"
+	},
+	"options_ui": {
+		"chrome_style": true,
+		"page": "options.html"
+	},
+	"background": {
+		"scripts": [
+			"background.js"
+		],
+		"persistent": false
+	},
+	"content_scripts": [
+		{
+			"run_at": "document_start",
+			"matches": [
+				"https://www.netflix.com/*"
+			],
+			"css": [
+				"content.css"
+			],
+			"js": [
+				"content.js"
+			]
+		}
+	]
+}

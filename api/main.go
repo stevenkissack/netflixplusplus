@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"net/url"
 	"os"
 	"time"
 
@@ -46,12 +47,12 @@ func getOmdbURL(o OmdbReq) string {
 
 	// Required title
 	reqURL += "&t="
-	reqURL += o.title
+	reqURL += url.QueryEscape(o.title)
 
 	// Conditional type param
 	if o.mediatype != "" {
 		reqURL += "&type="
-		reqURL += o.mediatype
+		reqURL += url.QueryEscape(o.mediatype)
 	}
 
 	//reqURL := reqURL + "&type="
