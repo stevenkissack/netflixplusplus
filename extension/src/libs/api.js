@@ -3,7 +3,7 @@ const apiUrl = 'http://localhost:1337';
 export async function fetchInfo(details) {
   // details: parsed information abstracted from dom node
   let builtUrl = apiUrl + '/details';
-
+  
   if(!details.title) {
     console.warn('Did not pass title to fetch');
     return null;
@@ -15,14 +15,7 @@ export async function fetchInfo(details) {
   
   if(details.year !== null) builtUrl += `&year=${encodeURIComponent(details.year)}`;
 
-  /*jsonRes = await fetch(builtUrl)
-    .then(res => res.json())
-    .catch(err => { console.error(err); return null; });
-  */
-  //var jsonRes = null;
-
-  return mixedRequestWorkaround(builtUrl)
-  
+  return mixedRequestWorkaround(builtUrl);
 }
 
 function mixedRequestWorkaround(url, callback) {

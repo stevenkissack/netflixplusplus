@@ -65,14 +65,29 @@ func getOmdbURL(o OmdbReq) string {
 	return reqURL
 }
 
-func getJSON(url string, target interface{}) error {
+func getJSON(url string) OmdbResp {
+	// Fetch remotely
 	r, err := reqClient.Get(url)
 	if err != nil {
-		return err
+		log.Print(err)
+		errResp := &OmdbResp{Error: "Failed to fetch data from remote API"}
+		return *errResp
 	}
+
+	// Wait for the to finish reading
 	defer r.Body.Close()
 
-	return json.NewDecoder(r.Body).Decode(target)
+	// Decode remote JSON
+	var res OmdbResp
+	dErr := json.NewDecoder(r.Body).Decode(&res)
+	if dErr != nil {
+		log.Print(dErr)
+		dErrResp := &OmdbResp{Error: "Failed to decode JSON from remote API"}
+		return *dErrResp
+	}
+
+	// Return JSON on success
+	return res
 }
 
 func main() {
@@ -107,17 +122,14 @@ func main() {
 
 		log.Print(reqURL)
 
-		response := new(OmdbResp) // or &Foo{}
-		errP := getJSON(reqURL, response)
+		resp := getJSON(reqURL)
 
-		if errP != nil {
-			log.Fatal(errP)
-			c.JSON(500, gin.H{"error": "Failed to parse response from remote service"})
-			return
+		if resp.Error != "" {
+			log.Print(resp.Error)
+			c.JSON(http.StatusInternalServerError, resp)
+		} else {
+			c.JSON(http.StatusOK, resp)
 		}
-
-		c.JSON(http.StatusOK, gin.H{"result": response})
-
 	})
 
 	router.Run(":" + port)
