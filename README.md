@@ -21,8 +21,15 @@ The OMDB API requires an API Key hence the need for the server app, I host it on
 All contributions are welcome, I wanted to make the plugin for my own usage but I also like OSS - So here we are!
 
 ## Future features
- - External links for more info
  - Secret Netflix categories
+ 
+ - Show ratings on:
+   - Jawbone layout
+   - tall bob card
+   - title page
+   - Show ratings on promotional banners
+ - Improve detail parsing for accuracy
+ - Manual redirecting of known errorous results (E.g. '3%' returns as 'Iron man 3' from OMDB)
  - Anything!
 
 

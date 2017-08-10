@@ -19,11 +19,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 				console.log(res)
 				if(res.ok) {
 					res.json().then(data => {
-						console.log(data)
-						sendResponse(data.result)
+						sendResponse(data)
 					})
 				} else {
-					console.log('res not ok')
 					sendResponse({error: true})
 				}
 			})

@@ -34,13 +34,13 @@ async function init() {
 					mutation.addedNodes && mutation.addedNodes.forEach((node) => {
 
 						// Check className each time as mutations seem to be live
-						if(node.className && node.className.indexOf('bob-card') !== -1) {
+						if(node.className && node.className.indexOf && node.className.indexOf('bob-card') !== -1) {
 							// TODO: Show loader
 							//setLoadingBobCard(node);
 							fetchInfo(parseBobCard(node)).then(res => {
 								enhanceBobCard(res, node);
 							});
-						} else if(node.className && node.className.indexOf('jawBone') !== -1) {
+						} else if(node.className && node.className.indexOf && node.className.indexOf('jawBone') !== -1) {
 							// TODO: Show loader
 							//setLoadingJawBone(node);
 							fetchInfo(parseJawBone(node)).then(res => {

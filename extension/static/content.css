@@ -1,14 +1,25 @@
-.npp-wrapper {
-  position:absolute;
-  top:0;
-  left:0;
-  
-  z-index: 99990;
-  min-width: 100px;
-  min-height: 100px;
-  background-color: #fff;
-  color: #000;
+.nf-svg-button-wrapper .nf-svg-button.simpleround.npp-icon-rt {
+    border-color: #e50914;
 }
-.npp-wrapper .npp-link {
-  z-index: 99991;
+.nf-svg-button-wrapper .nf-svg-button.simpleround.npp-icon-rt:hover {
+    border-color: #e50914;
+}
+
+.nf-svg-button-wrapper .nf-svg-button.simpleround.npp-icon-imdb {
+    border-color: #f6cc02;
+}
+.nf-svg-button-wrapper .nf-svg-button.simpleround.npp-icon-imdb:hover {
+    border-color: #f6cc02;
+}
+
+.nf-svg-button-wrapper .nf-svg-button.simpleround.npp-icon-meta {
+    border-color: #00f11e;
+}
+.nf-svg-button-wrapper .nf-svg-button.simpleround.npp-icon-meta:hover {
+    border-color: #00f11e;
+}
+
+.title_card .bob-card .bob-last-content {
+  /* Push down to fit the 3 extra items on, only for title card style */
+  margin-bottom: -26px;
 }

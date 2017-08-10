@@ -27,7 +27,7 @@ function mixedRequestWorkaround(url, callback) {
       if(resp && !resp.error) {
         resolve(resp);
       } else {
-        console.error('Failed to call API via background page');
+        // Probably not found in OMDB
         reject();
       }
     });
