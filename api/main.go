@@ -126,7 +126,7 @@ func main() {
 
 		if resp.Error != "" {
 			log.Print(resp.Error)
-			c.JSON(http.StatusInternalServerError, resp)
+			c.JSON(http.StatusNotFound, resp)
 		} else {
 			c.JSON(http.StatusOK, resp)
 		}
