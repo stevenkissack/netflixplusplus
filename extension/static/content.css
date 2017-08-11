@@ -19,7 +19,16 @@
     border-color: #00f11e;
 }
 
-.title_card .bob-card .bob-last-content {
-  /* Push down to fit the 3 extra items on, only for title card style */
+/*
+.bob-card.bob-card-tall-panel
+*/
+
+/* Need space for the 3 buttons vertically */
+.bob-card .npp-nudge-down {
   margin-bottom: -26px;
+}
+/* Both normal and tall cards for when fixed directly to the card, not within the button wrapper */
+.bob-card > .npp-wrapper {
+    z-index: 9999;
+    position: absolute;
 }
