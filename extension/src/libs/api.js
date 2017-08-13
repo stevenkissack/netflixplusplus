@@ -1,5 +1,6 @@
 //const apiUrl = 'http://localhost:1337';
-const apiUrl = 'http://netflixplusplus.heroku.com';
+const apiUrl = 'https://netflixplusplus.herokuapp.com';
+//const canUseHttps = true; // Seems heroku is allowing free https
 
 export async function fetchInfo(details) {
   // details: parsed information abstracted from dom node

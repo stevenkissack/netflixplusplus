@@ -1,6 +1,6 @@
 {
 	"name": "Netflix++",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Browser extensions enhancing your Netflix browsing experience",
 	"homepage_url": "https://github.com/stevokk/netflixplusplus",
 	"manifest_version": 2,
