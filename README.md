@@ -3,10 +3,10 @@ Netflix rating add-on solution - Including Chrome & Firefox browser extensions
 
 ## Architecture
 
-### Chrome Extension
+### Browser Extensions
 Standard JS plugin
- - Uses MutatuinObservers
- - Caches for sessions duration (avoids the issue of stale ratings)
+ - Uses MutationObservers
+ - Works around CSP mixed content issue by using background workers (Heroku free instance is HTTP only)
 
 ### Server
 Golang backend serving API request calls
@@ -25,13 +25,11 @@ All contributions are welcome, I wanted to make the plugin for my own usage but 
  
  - Show ratings on:
    - Jawbone layout
-   - tall bob card
    - title page
-   - Show ratings on promotional banners
+   - promotional banners
  - Improve detail parsing for accuracy
  - Manual redirecting of known errorous results (E.g. '3%' returns as 'Iron man 3' from OMDB)
  - Anything!
-
 
 
 # Developing
@@ -59,3 +57,6 @@ api/ - Go application
 1. Go to URL: `about:debugging#addons`
 2. Click **Load Temporary Add-on**
 3. Select `extension/manifest.json`
+
+### Opera
+Untested but can try this: https://addons.opera.com/en/extensions/details/download-chrome-extension-9/
