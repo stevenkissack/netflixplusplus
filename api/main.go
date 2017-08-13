@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -54,9 +55,6 @@ func getOmdbURL(o OmdbReq) string {
 		reqURL += "&type="
 		reqURL += url.QueryEscape(o.mediatype)
 	}
-
-	//reqURL := reqURL + "&type="
-	//reqURL := reqURL + mType
 
 	// apiKey, t = title, plot = short,
 	// r = json, type= movie|episode|series
@@ -126,7 +124,11 @@ func main() {
 
 		if resp.Error != "" {
 			log.Print(resp.Error)
-			c.JSON(http.StatusNotFound, resp)
+			if strings.Contains(resp.Error, "not found") {
+				c.JSON(http.StatusNotFound, resp)
+			} else {
+				c.JSON(http.StatusServiceUnavailable, resp)
+			}
 		} else {
 			c.JSON(http.StatusOK, resp)
 		}
