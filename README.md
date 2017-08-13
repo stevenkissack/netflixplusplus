@@ -6,13 +6,12 @@ Netflix rating add-on solution - Including Chrome & Firefox browser extensions
 ### Browser Extensions
 Standard JS plugin
  - Uses MutationObservers
- - Works around CSP mixed content issue by using background workers (Heroku free instance is HTTP only)
+ - Uses a fallback DOM targeting technique to help the robustness
 
 ### Server
 Golang backend serving API request calls
  - Caches to limit 3rd party thrashing
  - Uses OMDB database
- - 
 
 ### Deployment
 The OMDB API requires an API Key hence the need for the server app, I host it on a free Heroku instance and the code deployed is exactly what is in master, subtree **api/**.
