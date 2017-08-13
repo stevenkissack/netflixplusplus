@@ -1,4 +1,5 @@
-const apiUrl = 'http://localhost:1337';
+//const apiUrl = 'http://localhost:1337';
+const apiUrl = 'http://netflixplusplus.heroku.com';
 
 export async function fetchInfo(details) {
   // details: parsed information abstracted from dom node
