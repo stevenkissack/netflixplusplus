@@ -88,6 +88,22 @@ func getJSON(url string) OmdbResp {
 	return res
 }
 
+func CORSMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+		c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
+		c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
+		c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS, GET, PUT")
+
+		if c.Request.Method == "OPTIONS" {
+			c.AbortWithStatus(204)
+			return
+		}
+
+		c.Next()
+	}
+}
+
 func main() {
 	port := os.Getenv("PORT")
 	omdbAPIKey = os.Getenv("OMDB_KEY")
@@ -105,11 +121,7 @@ func main() {
 
 	router := gin.Default()
 
-	router.OPTIONS("/details", func(c *gin.Context) {
-		c.Header("Access-Control-Allow-Origin", "*")
-		c.Header("Access-Control-Allow-Headers", "access-control-allow-origin, access-control-allow-headers")
-		c.JSON(http.StatusOK, struct{}{})
-	})
+	router.Use(CORSMiddleware())
 
 	router.GET("/details", func(c *gin.Context) {
 
