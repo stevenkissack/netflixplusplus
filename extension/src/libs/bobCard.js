@@ -37,11 +37,7 @@ export function enhanceBobCard(details, node) {
 	} else {
 		enhanceDom = generateRatingsElement(details);
 	}
-	/*
-	  let newNode = document.createElement('span')
-		newNode.innerHTML = 'Loading Ratings'
-		newNode.style = ''
-	 */
+
 	let buttonWrapper = node.querySelector('.bob-last-content .bob-button-wrapper');
 	let isTall = node.className.indexOf('bob-card-tall-panel') !== -1;
 

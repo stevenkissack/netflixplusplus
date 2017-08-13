@@ -9,14 +9,6 @@ export function enhanceJawBone(details, node) {
 			<span>  </span>
 		</a>
 	);
-
-	/*
-	  let newNode = document.createElement('span')
-		newNode.innerHTML = 'Loading Ratings'
-		newNode.style = 'position:absolute;top:0;left:0;z-index:99999;width:100px;height:100px;background-color:#fff;color:#000;'
-		return newNode
-	 */
-
 };
 
 export function parseJawBone(node) {

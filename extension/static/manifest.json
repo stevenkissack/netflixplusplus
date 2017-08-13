@@ -1,19 +1,19 @@
 {
 	"name": "Netflix++",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Browser extensions enhancing your Netflix browsing experience",
 	"homepage_url": "https://github.com/stevokk/netflixplusplus",
 	"manifest_version": 2,
 	"minimum_chrome_version": "58",
 	"applications": {
 		"gecko": {
-			"id": "netflixplusplus/stevokk",
+			"id": "netflixplusplus-stevokk@github",
 			"strict_min_version": "52.0"
 		}
 	},
 	"permissions": [
 		"storage",
-		"http://netflixplusplus.heroku.com/*",
+		"https://netflixplusplus.heroku.com/*",
 		"http://localhost/*"
 	],
 	"icons": {

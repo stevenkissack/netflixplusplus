@@ -1,6 +1,5 @@
 //const apiUrl = 'http://localhost:1337';
 const apiUrl = 'https://netflixplusplus.herokuapp.com';
-//const canUseHttps = true; // Seems heroku is allowing free https
 
 export async function fetchInfo(details) {
   // details: parsed information abstracted from dom node
@@ -17,21 +16,8 @@ export async function fetchInfo(details) {
   
   if(details.year !== null) builtUrl += `&year=${encodeURIComponent(details.year)}`;
 
-  return mixedRequestWorkaround(builtUrl);
-}
+  //return mixedRequestWorkaround(builtUrl);
 
-function mixedRequestWorkaround(url, callback) {
-  return new Promise(function (resolve, reject) {
-    chrome.runtime.sendMessage({
-      action: 'fetch',
-      url
-    }, resp => {
-      if(resp && !resp.error) {
-        resolve(resp);
-      } else {
-        // Probably not found in OMDB
-        reject();
-      }
-    });
-  });
+  return fetch(builtUrl)
+		.then(res => res.json())
 }
