@@ -1,6 +1,8 @@
 # Netflix++
 Netflix rating add-on solution - Including Chrome & Firefox browser extensions
 
+Chrome: https://chrome.google.com/webstore/detail/netflix++/ofiindmkglmjpndljggpcpamcglnmmpl
+
 ## Architecture
 
 ### Browser Extensions
